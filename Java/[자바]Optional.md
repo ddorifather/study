@@ -31,4 +31,13 @@ Optional<Address> address; // Address 타입의 객체를 감쌀 수 있는 Opti
 ~~~
 변수명은 그냥 클래스 이름을 사용하기도 하지만 “maybe”나 “opt”와 같은 접두어를 붙여서 Optional 타입의 변수라는 것을 좀 더 명확히 나타내기도 합니다.   
 
+* Optional 객체 생성하기
+```
+Optional.empty()  => null을 담고 있는, 한 마디로 비어있는 Optional 객체를 얻어옵니다. 이 객체는 내부적으로 미리 생성해놓은 싱글턴 인스턴스입니다.   
+Optional<Member> mayberMember = Optional.empty();   
+```
+
+
+  
+  
 
