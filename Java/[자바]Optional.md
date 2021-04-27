@@ -18,6 +18,17 @@ Optional는 “존재할 수도 있지만 안 할 수도 있는 객체”, 즉, 
 2. 수고롭게 null 체크를 직접 하지 않아도 됩니다.
 3. 명시적으로 해당 변수가 null일 수도 있다는 가능성을 표현할 수 있습니다. (따라서 불필요한 방어 로직을 줄일 수 있습니다.)
 
+---
 
+## Optional 기본 사용법
+
+* Optional 변수 선언하기   
+<b>제네릭</b>을 제공하기 때문에, 변수를 선언할 때 명기한 타입 파라미터에 따라서 감쌀 수 있는 객체의 타입이 결정됩니다.   
+~~~
+Optional<Order> maybeOrder; // Order 타입의 객체를 감쌀 수 있는 Optional 타입의 변수   
+Optional<Member> optMember; // Member 타입의 객체를 감쌀 수 있는 Optional 타입의 변수   
+Optional<Address> address; // Address 타입의 객체를 감쌀 수 있는 Optional 타입의 변수   
+~~~
+변수명은 그냥 클래스 이름을 사용하기도 하지만 “maybe”나 “opt”와 같은 접두어를 붙여서 Optional 타입의 변수라는 것을 좀 더 명확히 나타내기도 합니다.   
 
 
