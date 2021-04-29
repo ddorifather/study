@@ -53,7 +53,7 @@ get() => 비어있는 Optional 객체에 대해서, NoSuchElementException 발�
 orElse(T other) => 안비어있으면 T를 비어있으면 other 객체를 반환한다.  (NULL이던 아니던 항상호출한다.)
 orElseGet(Supplier<? extends T> other) => 비어있는 Optional 객체에 대해서, 넘어온 함수형 인자를 통해 생성된 객체를 반환한다 (NULL일때만 호출한다.)
 orElseThrow(Supplier<? extends X> exceptionSupplier) => 비어있는 Optional 객체에 대해서, 넘어온 함수형 인자를 통해 생성된 예외를 던진다.
-isPresent() => boolean 타입으로 
+isPresent() => boolean 타입으로 객체 존재여부를 리턴해준다.
 ~~~
 
 
