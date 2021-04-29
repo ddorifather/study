@@ -56,6 +56,11 @@ orElseThrow(Supplier<? extends X> exceptionSupplier) => 비어있는 Optional �
 isPresent() => boolean 타입으로 객체 존재여부를 리턴해준다.
 ~~~
 
+* Stream처럼 사용하기   
+Optional을 최대 1개의 원소를 가지고 있는 특별한 Stream이라고 생각하기. 사용방법이나 사상이 매우 유사.   
+<b>map()으로 변신하기</b>
+
+<h1> 여기서 stream을 공부하고 다시공부하는걸로 </h1>
 
   
    
