@@ -28,7 +28,6 @@ Optional는 “존재할 수도 있지만 안 할 수도 있는 객체”, 즉, 
 ~~~
 Optional<Order> maybeOrder; // Order 타입의 객체를 감쌀 수 있는 Optional 타입의 변수   
 Optional<Member> optMember; // Member 타입의 객체를 감쌀 수 있는 Optional 타입의 변수   
-Optional<Address> address; // Address 타입의 객체를 감쌀 수 있는 Optional 타입의 변수   
 ~~~
 변수명은 그냥 클래스 이름을 사용하기도 하지만 “maybe”나 “opt”와 같은 접두어를 붙여서 Optional 타입의 변수라는 것을 좀 더 명확히 나타내기도 합니다.   
 
@@ -38,7 +37,7 @@ Optional.empty()  => null을 담고 있는, 한 마디로 비어있는 Optional 
 Optional<Member> mayberMember = Optional.empty();   
 
 Optional.of(value) => null이 아닌 객체를 담고 있는 Optional 객체를 생성합니다. null이 넘어오면 NPE를 던지기 때문에 주의해야합니다.
-Optional<Member> mayberMember = Optional.of(aMember);
+Optional<Member> mayberMember = Optional.of(member);
 
 Optional.ofNullable(value) => null인지 아닌지 확신할 수 없는 객체를 담고 있는 Optional 객체를 생성합니다. 위 두개를 합쳐놓은 메소드. null이 넘어오면 NPE를 던지지 않고
 Optional.empty()와 동일하게 비어있는 Optional 객체를 얻어옵니다. 해당 객체가 null인지 아닌지 자신이 없을 경우에는 이 메소드를 사용해야 합니다.
@@ -51,9 +50,10 @@ Optional<Member> maybeNotMember = Optional.ofNullable(null);
 null을 담고 있는경우는 다르게 동작하고 객체가 존재할 경우 동일하게 해당 값을 반환합니다.   
 ~~~
 get() => 비어있는 Optional 객체에 대해서, NoSuchElementException 발생시킨다.
-orElse(T other) => 비어있는 Optional 객체에 대해서, 넘어온 인자를 반환한다.
-orElseGet(Supplier<? extends T> other) => 비어있는 Optional 객체에 대해서, 넘어온 함수형 인자를 통해 생성된 객체를 반환한다
+orElse(T other) => 안비어있으면 T를 비어있으면 other 객체를 반환한다.  (NULL이던 아니던 항상호출한다.)
+orElseGet(Supplier<? extends T> other) => 비어있는 Optional 객체에 대해서, 넘어온 함수형 인자를 통해 생성된 객체를 반환한다 (NULL일때만 호출한다.)
 orElseThrow(Supplier<? extends X> exceptionSupplier) => 비어있는 Optional 객체에 대해서, 넘어온 함수형 인자를 통해 생성된 예외를 던진다.
+isPresent() => boolean 타입으로 
 ~~~
 
 
