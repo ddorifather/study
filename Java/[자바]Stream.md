@@ -59,3 +59,47 @@ filter는 말 그대로 필터링, 즉 조건에 맞는 것만 거른다는 것�
 즉 "ddori" , "oracle"만 가지고 있는 스트림을 반환한다. 
 
 ~~~
+
+2. Map
+~~~
+List<String> names = Arrays.asList("ddori","oracle","jdk","java");
+names.parallelStream()
+     .map(x -> x.concat("s"))
+     .forEach(x -> System.out.println(x));
+
+ParallelStream은 Java에서 제공하고 있는 Stream중 하나로 Collection속의 데이터를 병렬 처리하기 위해서 사용됨.
+map은 스트림의 각 요소를 연산하는데 쓰인다. 
+~~~
+3. Peek
+peek()도 Map과 유사하게 각 요소에 어떤 연산을 적용할 때 사용한다.
+
+4. Sorted
+말 그대로 스트림의 요소들을 정렬해준다.
+
+5. Limit
+~~~
+List<Integer> ages = Arrays.asList(1,2,3,4,5,6,7,8,9);
+ages.stream()
+    .filter(x -> x > 3)
+    .limit(3);
+//4,5,6
+
+스트림의 개수를 .limit(3) 으로 지정하면 3개로 제한한다. (물론 중개연산이라 스트림 반환)
+
+~~~
+
+6. Distinct
+
+스트림의 요소가 예를들어 1,2,1,2,1,2,일 때 .distinct()를 적용하면 1,2로 중복을 제거한다.
+
+7. Skip
+
+.skip(3)이라고 하면 처음 3개의 요소는 제외하고 나머지 요소들로 새로운 stream을 만든다.
+
+8. MapToInt, MapToLong, MapToDouble
+
+mapTo 함수들은 해당 타입의 스트림으로 바꿔준다. "1","2","3"을 가진 스트림이 있다면 MapToInt 하면 1,2,3 스트림으로 변환.   
+
+
+ㅌㅏ입의 스트리
+
