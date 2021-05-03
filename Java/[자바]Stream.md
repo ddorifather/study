@@ -109,10 +109,75 @@ mapTo 함수들은 해당 타입의 스트림으로 바꿔준다. "1","2","3"을
 2. reduce
 ~~~
 List<Integer> ages = new ArrayList<Integer>();
-ages.add(1);ages.add(2);ages.add(3);//1,2,3
-System.out.println(ages.stream().reduce((b,c) -> b+c).get());//1+2+3=6
+ages.add(1);
+ages.add(2);
+ages.add(3);//1,2,3
+System.out.println(ages.stream().reduce((x,y) -> x+y).get());//1+2+3=6
 
 누적된 값을 계산하는 함수다.
+x+y된 값이 다시 x가되고 다음 스트림의 요소가 y가 되어서 계속 누적된다.
+~~~
+
+3.forEach
+~~~
+List<Integer> ages = new ArrayList<Integer>();
+ages.add(1);
+ages.add(2);
+ages.add(3);//1,2,3
+Set<Integer> set = ages.stream().collect(Collectors.toSet());
+set.forEach(x-> System.out.println(x));//1,2,3
+forEach는 map이나 peek의 최종연산 버전이다. 각 요소를 돌면서 처리할 수 있도록 되어있다
+~~~
+
+4. collect
+collect는 스트림의 값들을 모아주는 기능을 한다. toMap, toSet, toList로 해당 스트림을 다시 컬렉션으로 바꿔준다.
+
+5. iterator
+~~~
+List<String> names = Arrays.asList("oracle", "ddori", "jdk", "java");
+Iterator<String> iter = names.stream().iterator();
+while(iter.hasNext()) {
+    System.out.println(iter.next());//oracle, ddori, jdk, java
+}
+iterator는 Iterator<T>를 반환한다.
+~~~
+
+6. noneMatch, anyMatch, allMatch
+~~~
+List<Integer> ages = new ArrayList<Integer>();
+ages.add(1);ages.add(2);ages.add(3);//1,2,3
+System.out.println(ages.stream().filter(x -> x>1).noneMatch(x->x>2));//false
+
+noneMatch는 최종적으로 얻은 스트림의 "모든" 요소들이 조건을 만족하지 "않는"지를 판단해서 boolean값을 리턴한다.
+
+anyMatch는 스트림의 요소들 중에 하나라도 조건을 만족하는지 판단해서 boolean값을 리턴하고,
+
+allMatch는 스트림의 "모든" 요소들이 조건을 만족하는지를 판단해서 boolean값을 리턴한다.
+
+
 
 ~~~
+- 알아둘 것
+
+1. stream은 재사용이 불가능하다.
+
+2. 병렬 스트림은 여러 쓰레드가 작업한다.
+stream()으로 스트림을 생성하지 않고 parallelStream()으로 병렬 스트림을 만들 수 있다. 이렇게 하면   
+여러 쓰레드가 스트림에서 요소를 필터링하고 나온 요소 수를 계산하고 쓰레드끼리 다시 한 번 각자 계산하고 리턴해준다.   
+단순하게 생각해서 여러 쓰레드가 처리해주니 병렬 스트림이 항상 성능면에서 유리해보일 수 있지만 어플리케이션에서 사용하는 쓰레드가 많거나   
+스트림의 요소 수가 많지 않다면 오히려 쓰레드를 사용하는데 드는 오버헤드가 더 클 수도 있다.
+
+3. 중개 연산은 미리하지 않는다 지연 연산을 한다.
+~~~
+Stream<String> a = names.stream().filter(x -> x.contains("o")).map(x-> x.concat("s"));
+a.forEach(x -> System.out.println(x));
+
+위와 같은 코드가 있으면 위에 filter와 map 함수는 미리 계산하고 있지 않고 있다가 forEach와 같은 최종연산이 적용될 때 중개 연산도 실행된다.
+
+이로써 얻는 장점은 미리 계산하면서 두 번 순회하는 짓을 안할 수 있게 된다는 점이다.
+
+
+
+~~~
+
 
