@@ -101,5 +101,18 @@ ages.stream()
 mapTo 함수들은 해당 타입의 스트림으로 바꿔준다. "1","2","3"을 가진 스트림이 있다면 MapToInt 하면 1,2,3 스트림으로 변환.   
 
 
-ㅌㅏ입의 스트리
+- 최종연산
+1. count(), min(), max(), sum(), average()
+
+최종연산이기 때문에 앞서 함수를 적용했던 스트림에 있는 요소들에 대해 count를 세거나 최소값, 최대값, 합계, 평균 값을 얻을 수 있는 함수다.
+
+2. reduce
+~~~
+List<Integer> ages = new ArrayList<Integer>();
+ages.add(1);ages.add(2);ages.add(3);//1,2,3
+System.out.println(ages.stream().reduce((b,c) -> b+c).get());//1+2+3=6
+
+누적된 값을 계산하는 함수다.
+
+~~~
 
