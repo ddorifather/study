@@ -23,3 +23,8 @@ Liskov substitution principle
 ## ISP (인터페이스 분리 원칙)
 Interface segregation principle   
 * 특정 클라이언트를 위한 인터페이스 여러 개가 범용 인터페이스 하나보다 낫다.
+
+## DIP (의존관계 역전 원칙)   
+Dependency inversion principle   
+* 프로그래머는 “추상화에 의존해야지, 구체화에 의존하면 안된다.” 의존성 주입은 이 원칙을 따르는 방법 중 하나다
+
